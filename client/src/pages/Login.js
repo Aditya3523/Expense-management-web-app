@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, message } from "antd";
+import {Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import "../styles/Loginpage.css"; // Import the CSS file here
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Login = () => {
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      const { data } = await axios.post("/users/login", values);
+      const { data } = await axios.post("/api/v1/users/login", values);
       setLoading(false);
       message.success("login success");
       localStorage.setItem(
@@ -32,23 +33,32 @@ const Login = () => {
   }, [navigate]);
   return (
     <>
-      <div className="resgister-page ">
-        {loading && <Spinner />}
-        <Form layout="vertical" onFinish={submitHandler}>
-          <h1>Login Form</h1>
-
-          <Form.Item label="Email" name="email">
-            <Input type="email" />
+     <div className="login-box">
+     {loading && <Spinner />}
+     <Form layout="vertical" onFinish={submitHandler}>
+    <h2>Login</h2>
+      <div className="user-box">
+      <Form.Item label="Email" name="email">
+            <Input type="email" placeholder="Email"/>
           </Form.Item>
           <Form.Item label="Password" name="password">
-            <Input type="password" />
+            <Input type="password"  placeholder="Password" />
           </Form.Item>
-          <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between">
             <Link to="/register">Not a user ? Cleck Here to regsiter</Link>
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary"> 
+      <span />
+      <span />
+      <span />
+      <span />
+      Login
+      </button>
           </div>
-        </Form>
       </div>
+     
+    </Form>
+</div>
+
     </>
   );
 };
