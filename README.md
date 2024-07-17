@@ -5,4 +5,4 @@ Please check branches because all code has been added in multiple branches if yo
 
 ## please check branches!
 
-# Check out techinfoyt youtube channel for full stack projects tutorials
+
